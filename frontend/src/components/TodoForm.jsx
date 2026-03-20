@@ -10,7 +10,7 @@ const PRIORITIES = [
 const TodoForm = ({ onAdd, loading, categories = [], inputRef }) => {
   const { dark } = useTheme();
   const [task,     setTask]     = useState("");
-  const [priority, setPriority] = useState("medium");
+  const [priority, setPriority] = useState("");
   const [dueDate,  setDueDate]  = useState("");
   const [tags,     setTags]     = useState("");
   const [notes,    setNotes]    = useState("");
@@ -82,7 +82,7 @@ const TodoForm = ({ onAdd, loading, categories = [], inputRef }) => {
               {PRIORITIES.map(p => (
                 <button key={p.value} type="button" onClick={() => setPriority(p.value)}
                   className={`flex-1 py-1.5 rounded-xl text-xs font-display font-semibold border-2 transition-all ${priority === p.value ? `${p.bg} ${p.color}` : dark ? "border-slate-700/60 text-slate-600 hover:border-slate-600" : "border-slate-200 text-slate-400 hover:border-slate-300"}`}>
-                  {p.label}
+                  {p.label} 
                 </button>
               ))}
             </div>
@@ -140,7 +140,7 @@ const TodoForm = ({ onAdd, loading, categories = [], inputRef }) => {
             ? <><svg className="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/></svg>Adding…</>
             : <><svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 4v16m8-8H4"/></svg>
                 Add Task
-                {priority !== "medium" && <span className={`text-xs px-1.5 py-0.5 rounded-lg border ml-1 ${sel?.bg} ${sel?.color}`}>{sel?.label}</span>}
+                {priority && <span className={`text-xs px-1.5 py-0.5 rounded-lg border ml-1 ${sel?.bg} ${sel?.color}`}>{sel?.label}</span>}
               </>
           }
         </button>
